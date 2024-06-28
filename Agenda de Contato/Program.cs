@@ -1,4 +1,10 @@
+using Agenda_de_Contato.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllersWithViews();
+ServiceProvider provide = builder.Services.BuildServiceProvider();
+var configuration = provide.GetRequiredService<IConfiguration>();
 
 // Add services to the container.
 
