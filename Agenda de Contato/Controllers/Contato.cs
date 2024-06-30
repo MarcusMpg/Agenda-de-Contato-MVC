@@ -21,18 +21,34 @@ namespace Agenda_de_Contato.Controllers
         {
             return View();
         }
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+           ContatoModel contato = _IContatoRepositorio.ListarPorId(id);   
+            return View(contato);
         }
-        public IActionResult ExcluirSpan()
+        public IActionResult ExcluirSpan(int id)
         {
-            return View();
+            ContatoModel contato = _IContatoRepositorio.ListarPorId(id);
+            return View(contato);
         }
+
+        public IActionResult Excluir(int id)
+        {
+            _IContatoRepositorio.Excluir(id);
+            return RedirectToAction("Index");
+        }
+
+
         [HttpPost]
         public IActionResult Criar(ContatoModel contato) 
         {
         _IContatoRepositorio.Adicionar(contato);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public IActionResult Editar(ContatoModel contato)
+        {
+            _IContatoRepositorio.Editar(contato);
             return RedirectToAction("Index");
         }
     }
