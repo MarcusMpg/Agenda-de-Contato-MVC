@@ -12,14 +12,17 @@
     <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
         <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+        @Html.ValidationMessageFor(x => x.Nome)
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">Email</label>
         <input type="text" asp-for="Email" class="form-control" placeholder="Digite o email do contato">
+        @Html.ValidationMessageFor(x => x.Email)
     </div>
     <div class="mb-3">
         <label for="numero" class="form-label">Numero</label>
         <input type="number" asp-for="Numero" class="form-control" placeholder="Digite o Numero do contato">
+        @Html.ValidationMessageFor(x => x.Numero)
     </div>
 
     <button type="submit" class="btn btn-primary">Alterar</button>

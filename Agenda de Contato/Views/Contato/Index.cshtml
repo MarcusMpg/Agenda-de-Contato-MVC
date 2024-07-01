@@ -1,26 +1,42 @@
-﻿
-@model List<ContatoModel>
+﻿@model List<ContatoModel>
 @{
     ViewData["Title"] = "Agenda de Contatos";
 }
-<div class="text-center" >
+<div class="text-center">
     <div class="text-start">
         <a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Criar">adicionar novo contato</a>
     </div>
+    <br />
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
     <br/>
-<h1 class="display-4">Agenda de Contotos</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Numero</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-            @if(Model != null && Model.Any())
+    <h1 class="display-4">Agenda de Contotos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Numero</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
             {
                 foreach (ContatoModel contato in Model)
                 {
@@ -39,5 +55,5 @@
                 }
             }
         </tbody>
-</table>
+    </table>
 </div>
